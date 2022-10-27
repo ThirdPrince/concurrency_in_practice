@@ -9,7 +9,8 @@ public class ThreadLocalNormalUsage02 {
      static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
     public String date(int seconds){
         Date date = new Date(1000 *seconds);
-       SimpleDateFormat simpleDateFormat =  ThreadSafeFormatter.dateFormatThreadLocal.get();
+       SimpleDateFormat simpleDateFormat =  null;
+               //ThreadSafeFormatter.dateFormatThreadLocal.get();
         return dateFormat.format(date);
     }
 
@@ -31,11 +32,11 @@ public class ThreadLocalNormalUsage02 {
 }
 
 class ThreadSafeFormatter{
-    public static ThreadLocal<SimpleDateFormat> dateFormatThreadLocal  = new ThreadLocal<>(){
-        @Override
-        protected SimpleDateFormat initialValue() {
-            return new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        }
-    };
+//    public static ThreadLocal<SimpleDateFormat> dateFormatThreadLocal  = new ThreadLocal<>(){
+//        @Override
+//        protected SimpleDateFormat initialValue() {
+//            return new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+//        }
+//    };
 
 }
